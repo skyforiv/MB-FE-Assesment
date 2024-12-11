@@ -3,7 +3,7 @@ import "./CharacterRow.css";
 
 const CharacterRow = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-  const { name, status, species, gender, image, origin, location, episode } = props;
+  const { id, name, status, species, gender, image, origin, location, episode } = props;
 
   const isOpenRender = () => {
     return (
@@ -21,7 +21,7 @@ const CharacterRow = (props) => {
 
   return (
     <>
-      <div className={`table-row ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
+      <div  className={`table-row ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
         <div className="table-cell">
           <img src={image} alt={name} className="character-image" />
         </div>

@@ -1,37 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./CharacterList.css"
 import CharacterCard from '../../components/character-card/CharacterCard';
 import CharacterRow from '../../components/character-row/CharacterRow';
+import { getCharacters } from '../../services/RickandMortyService';
+import PagingComponent from '../../components/paging/PagingComponent';
 
-const character = {
-    "id": 1,
-    "name": "Rick Sanchez",
-    "status": "Alive",
-    "species": "Human",
-    "type": "",
-    "gender": "Male",
-    "origin": {
-      "name": "Earth",
-      "url": "https://rickandmortyapi.com/api/location/1"
-    },
-    "location": {
-      "name": "Earth",
-      "url": "https://rickandmortyapi.com/api/location/20"
-    },
-    "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-    "episode": [
-      "https://rickandmortyapi.com/api/episode/1",
-      "https://rickandmortyapi.com/api/episode/2"
-    ],
-    "url": "https://rickandmortyapi.com/api/character/1",
-    "created": "2017-11-04T18:48:46.250Z"
-  };
 
 const CharacterList = () => {
+  const [characterState, setCharacterState] = useState({
+    loading: false,
+    error: {},
+    result: {}
+});
+
+const [currentPage, setCurrentPage] = useState(1);
+
+  const getCharactersAsync = async () => {
+    const result = await getCharacters({page:currentPage});
+    setCharacterState(result);
+  }
+
+  useEffect(() => {
+    getCharactersAsync();
+  }, [currentPage]);
+  
     return (
         <div>
-            <CharacterCard {...character}/>
-            <CharacterRow {...character}/>
+          {
+            characterState.loading
+            ? (<div> Yükleniyor...</div>)
+            : characterState.result && (
+              <div>
+                {
+                  !characterState.result.results || characterState.result.results.length === 0
+                  ? (<div>Sonuç bulunamadı</div>)
+                  : (
+                    <div>
+                      {
+                        characterState.result.results.map(character => <CharacterRow key = {character.id} {...character}/>)
+                      }
+                    </div>
+                  )
+                }
+              </div>
+            )
+          }
+          <PagingComponent 
+          currentPage={currentPage} 
+          pageCount = {characterState?.result?.info?.pages}
+          nextPage={() => {
+            if(currentPage<characterState?.result?.info?.pages -1)
+              setCurrentPage(currentPage + 1);
+          }} 
+          prevPage={() => {
+            if(currentPage !== 0)
+            setCurrentPage(currentPage - 1)
+          }} 
+          setPage={setCurrentPage} />
         </div>
     );
 };
