@@ -35,6 +35,12 @@ Projede istenilen gereksinimlerde favori ve layout geçişleri bulunmamaktaydı 
 
 ---
 
+## Ekran Görüntüleri
+
+![MacBook Pro-1734295706676](https://github.com/user-attachments/assets/c60caf89-3b49-42a2-b417-fb554c7f98f7)
+
+
+
 ## Teknik Detaylar
 - **Framework/Kütüphane:** React JS
 - **State Yönetimi:** React State Hook
