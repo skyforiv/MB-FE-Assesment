@@ -38,7 +38,13 @@ Projede istenilen gereksinimlerde favori ve layout geçişleri bulunmamaktaydı 
 ## Ekran Görüntüleri
 
 <img src="https://github.com/user-attachments/assets/c60caf89-3b49-42a2-b417-fb554c7f98f7" width="500" />
+
+---
+
 <img src="https://github.com/user-attachments/assets/442d8ba6-d64d-4518-bf18-283e66b049be" width="500" />
+
+---
+
 <img src="https://github.com/user-attachments/assets/3b5f648b-5a84-41ca-8bf0-3ba1e6702c1e" height="500" />
 
 
