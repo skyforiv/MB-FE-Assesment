@@ -3,7 +3,10 @@ import "./CharacterRow.css";
 import FavoriteButton from "../favorite-button/FavoriteButton";
 
 const CharacterRow = (props) => {
+  // Açılır/kapanır detay satırı için state yönetimi
   const [isOpen, setIsOpen] = useState(false);
+
+  // Props'tan alınan karakter verileri
   const { id, name, status, species, gender, image, origin, location, episode } = props;
 
   const getStatusClass = (status) => {
@@ -19,6 +22,7 @@ const CharacterRow = (props) => {
     }
   };
 
+  // Satır açıldığında gösterilecek detayları oluşturan fonksiyon
   const isOpenRender = () => {
     return (
       <div className="table-row-details">
@@ -31,7 +35,7 @@ const CharacterRow = (props) => {
         <div className="details-column">
           <p><strong>Status:</strong> {status}</p>
           <p><strong>Species:</strong> {species}</p>
-          <p><strong>Gender::</strong> {gender}</p>
+          <p><strong>Gender:</strong> {gender}</p>
           <p><strong>Origin:</strong> {origin.name}</p>
           <p><strong>Location:</strong> {location.name}</p>
           <p><strong>Episode Count:</strong> {episode.length}</p>
@@ -52,7 +56,7 @@ const CharacterRow = (props) => {
           <i
             className={`fas fa-chevron-right ${isOpen ? " rotate" : ""} expand-icon`}
             onClick={(e) => {
-              e.stopPropagation();
+              e.stopPropagation(); // Tıklamanın üst seviyeye taşınmasını engelle
               setIsOpen(!isOpen);
             }}
             title={isOpen ? "Satırı Kapat" : "Satırı Aç"}
@@ -60,11 +64,12 @@ const CharacterRow = (props) => {
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
-              if (e.key === 'Enter') setIsOpen(!isOpen);
+              if (e.key === 'Enter') setIsOpen(!isOpen); // Klavyeden Enter ile aç/kapat
             }}
           ></i>
           <img src={image} alt={name} className="character-image" />
         </div>
+
         <div className="table-cell table-cell__id">{id}</div>
         <div className="table-cell table-cell__name">{name}</div>
         <div className="table-cell">

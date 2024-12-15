@@ -8,13 +8,13 @@ const Footer = () => {
         <div className="footer-text">
           <h2>Welcome to the Rick and Morty Universe!</h2>
           <p>
-            Project MB Front-end.
+            Massive Bioinformatics Front-end Assesment
           </p>
         </div>
 
         <div className="spaceship-container">
           <img
-            src="/img/spaceship.png" // Uzay gemisi GIF
+            src="/img/spaceship.png" 
             alt="spaceship"
             className="spaceship"
           />

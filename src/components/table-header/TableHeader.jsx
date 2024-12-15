@@ -2,24 +2,26 @@ import React, { useState } from "react";
 import "./TableHeader.css";
 
 const TableHeader = ({
-  headerContextList = [],
-  onFilter = (key, value) => {},
-  onSort = (key, newDirection) => {},
-  onToggle = (toggleState) => {},
+  headerContextList = [], // Başlık verilerini liste olarak alır
+  onFilter = (key, value) => {}, // Filtreleme işlemi için callback fonksiyonu
+  onSort = (key, newDirection) => {}, // Sıralama işlemi için callback fonksiyonu
+  onToggle = (toggleState) => {}, // Görünüm değiştirme işlemi için callback fonksiyonu
 }) => {
-  const [filters, setFilters] = useState({});
-  const [sortState, setSortState] = useState({ key: "", direction: "" });
-  const [isGridView, setIsGridView] = useState(false);
+  const [filters, setFilters] = useState({}); // Uygulanan filtreleri saklar
+  const [sortState, setSortState] = useState({ key: "", direction: "" }); // Sıralama durumu
+  const [isGridView, setIsGridView] = useState(false); // Grid ve satır görünümü arasında geçiş
 
   const handleFilterChange = (key, value) => {
+    // Filtre değişimlerini işler
     setFilters((prevFilters) => ({
       ...prevFilters,
       [key]: value,
     }));
-    onFilter(key, value);
+    onFilter(key, value); // propstan gelen Callback ile dışarıya bildir
   };
 
   const handleClearFilter = (key) => {
+    // Belirli bir filtreyi temizler
     setFilters((prevFilters) => {
       const updatedFilters = { ...prevFilters };
       delete updatedFilters[key];
@@ -29,14 +31,16 @@ const TableHeader = ({
   };
 
   const handleSort = (key) => {
+    // Sıralama yönünü değiştir
     const newDirection =
       sortState.key === key && sortState.direction === "asc" ? "desc" : "asc";
     setSortState({ key, direction: newDirection });
-    onSort(key, newDirection);
+    onSort(key, newDirection); // Yeni sıralama durumu callback ile bildir
   };
 
   const toggleView = () => {
-    setIsGridView((prev) => !prev); // Görünümü değiştiren fonksiyon
+    // Görünümü değiştir grid veya row
+    setIsGridView((prev) => !prev);
     onToggle(isGridView ? "row" : "grid");
   };
 
@@ -45,6 +49,7 @@ const TableHeader = ({
       <div className="view-toggle">
         <button onClick={toggleView} className="view-toggle-btn">
           <div className="icon-container">
+            {/* Grid ve satır görünümü ikonları */}
             <i
               className={`fas fa-border-all ${isGridView ? "active" : ""}`}
               aria-label="Grid View"
@@ -66,6 +71,7 @@ const TableHeader = ({
               {column.label}
               {column.sortable && (
                 <span className="sort-icon">
+                  {/* Sıralama ikonları */}
                   {sortState.key === column.key ? (
                     sortState.direction === "asc" ? (
                       <i className="fas fa-sort-up"></i>
@@ -81,6 +87,7 @@ const TableHeader = ({
 
             {column.filterable && (
               <div className="filter-container">
+                {/* Status filtresi */}
                 {column.key === "status" && (
                   <div className="filter-wrapper">
                     <select
@@ -105,6 +112,7 @@ const TableHeader = ({
                     )}
                   </div>
                 )}
+                {/* Gender filtresi */}
                 {column.key === "gender" && (
                   <div className="filter-wrapper">
                     <select
@@ -130,6 +138,7 @@ const TableHeader = ({
                     )}
                   </div>
                 )}
+                {/* Tür (species) filtresi */}
                 {column.key === "species" && (
                   <div className="filter-wrapper">
                     <select
@@ -144,7 +153,9 @@ const TableHeader = ({
                       <option value="Alien">Alien</option>
                       <option value="Humanoid">Humanoid</option>
                       <option value="Poopybutthole">Poopybutthole</option>
-                      <option value="Mythological Creature">Mythological Creature</option>
+                      <option value="Mythological Creature">
+                        Mythological Creature
+                      </option>
                       <option value="Animal">Animal</option>
                       <option value="Disease">Disease</option>
                       <option value="Robot">Robot</option>
@@ -161,6 +172,7 @@ const TableHeader = ({
                     )}
                   </div>
                 )}
+                {/* Diğer filtreler */}
                 {column.key !== "status" &&
                   column.key !== "gender" &&
                   column.key !== "species" && (

@@ -1,28 +1,31 @@
 import React from "react";
 import "./PagingComponent.css";
-import "@fortawesome/fontawesome-free/css/all.min.css"; 
+
 function PagingComponent({
-  currentPage,
-  nextPage,
-  prevPage,
-  setPage,
-  pageCount = 0,
-  pageSize,
-  setPageSize,
-  rowCount,
+  currentPage,  
+  nextPage,     
+  prevPage,     
+  setPage,      
+  pageCount = 0,  
+  pageSize,     
+  setPageSize,  
+  rowCount,     
 }) {
+ 
   let startPage = currentPage - 2;
+  // Sayfa numarası 1'in altına düşmesin
   if (startPage < 1) {
-    startPage = 1;
+    startPage = 1; 
   }
 
+  // Gösterilecek sayfa numarası butonları için dizi oluştur
   const pages = Array.from({ length: 5 }, (_, i) => startPage + i);
 
   return (
     <div className="paging-container">
       <button
         onClick={prevPage}
-        disabled={currentPage <= 1}
+        disabled={currentPage <= 1} // Eğer birinci sayfadaysak buton devre dışı
         className="paging-button"
       >
         <i className="fas fa-arrow-left"></i> 
@@ -32,11 +35,11 @@ function PagingComponent({
       {/* Sayfa Numaraları */}
       {pages.map((pageNum) => (
         <div key={pageNum}>
-          {pageNum <= pageCount && (
+          {pageNum <= pageCount && ( // Eğer sayfa toplam sayfa sayısını geçmiyorsa
             <button
-              onClick={() => setPage(pageNum)}
+              onClick={() => setPage(pageNum)} // Sayfa numarasına tıklandığında ilgili sayfaya git
               className={`paging-number ${
-                pageNum === currentPage ? "active" : ""
+                pageNum === currentPage ? "active" : "" // Mevcut sayfadaysak buton aktif görünsün
               }`}
             >
               {pageNum}
@@ -47,7 +50,7 @@ function PagingComponent({
 
       <button
         onClick={nextPage}
-        disabled={currentPage >= pageCount}
+        disabled={currentPage >= pageCount} // Eğer son sayfadaysak buton devre dışı
         className="paging-button"
       >
         Next
@@ -59,8 +62,8 @@ function PagingComponent({
         name="pageSize"
         id="pageSize"
         onChange={(e) => {
-          setPage(1);
-          setPageSize(Number.parseInt(e.target.value));
+          setPage(1); // Sayfa boyutu değiştiğinde ilk sayfaya git
+          setPageSize(Number.parseInt(e.target.value)); // Yeni sayfa boyutunu ayarla
         }}
         className="paging-select"
       >

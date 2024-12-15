@@ -2,7 +2,9 @@ import React from "react";
 import "./CharacterCard.css";
 import FavoriteButton from "../favorite-button/FavoriteButton";
 
+// Karakter kartı bileşeni
 const CharacterCard = (props) => {
+  // Props'tan alınan karakter verilerini destructuring ile ayırıyoruz
   const {
     id,
     name,
@@ -14,6 +16,8 @@ const CharacterCard = (props) => {
     gender,
     episode,
   } = props;
+
+  // Favori için gerekli tüm karakter verilerini bir nesneye topluyoruz
   const characterData = {
     id,
     name,
@@ -25,6 +29,7 @@ const CharacterCard = (props) => {
     location,
     episode,
   };
+
   return (
     <div className="character-card">
       <div className="character-card__media">
@@ -33,6 +38,7 @@ const CharacterCard = (props) => {
           <FavoriteButton id={id} characterData={characterData} />
         </div>
       </div>
+
       <div className="character-card__content">
         <p className="character-card__info">
           <span className="character-card__label">ID:</span> {id}
@@ -59,7 +65,6 @@ const CharacterCard = (props) => {
         <p className="character-card__info">
           <span className="character-card__label">Location:</span> {location.name}
         </p>
-
         <p className="character-card__info">
           <span className="character-card__label">Episode Count:</span> {episode.length}
         </p>
