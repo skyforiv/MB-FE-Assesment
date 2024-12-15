@@ -1,6 +1,5 @@
 {
   "name": "mb-rick-and-morty",
-  "homepage": "https://skyforiv.github.io/MB-FE-Assesment",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,8 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build"
+
   },
   "eslintConfig": {
     "extends": [
