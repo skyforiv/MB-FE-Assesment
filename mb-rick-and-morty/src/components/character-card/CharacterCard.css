@@ -16,6 +16,22 @@
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 12px;
+}
+
+.character-card__media{
+  position: relative;
+}
+
+.character-card__favorite-btn{
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  background-color: #fff;
+  background-color: #fff; 
+  border-radius: 50%; 
+  width: 30px;
+  height: 30px;
 }
 
 .character-card__content {
@@ -37,4 +53,26 @@
 
 .character-card__label {
   font-weight: bold;
+}
+
+
+.character-card__status {
+  display: inline-block; 
+  padding: 5px 10px;
+  margin-left: 10px;
+  font-weight: bold;
+  border-radius: 12px; 
+  color: white; 
+}
+
+.character-card__status--alive {
+  background-color: green; 
+}
+
+.character-card__status--dead {
+  background-color: red; 
+}
+
+.character-card__status--unknown {
+  background-color: gray; 
 }

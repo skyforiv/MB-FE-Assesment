@@ -1,0 +1,141 @@
+.rick-and-morty-footer {
+    background: linear-gradient(45deg, #00b5e2, #1d4f7d); 
+    color: #fff;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background-size: cover;
+}
+
+.footer-text h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #ffcc00;
+}
+
+.footer-text p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.footer-text a {
+    color: #ff5722;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.footer-text a:hover {
+    color: #ffcc00;
+}
+
+.spaceship-container {
+    position: absolute;
+    top: 10%;
+    left: -150px; 
+    animation: fly 10s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+.spaceship {
+    width: 150px;
+    transform: rotate(15deg); 
+}
+
+@keyframes fly {
+    0% {
+        left: -150px;
+        top: 10%;
+        transform: rotate(15deg); 
+    }
+    25% {
+        left: 20%;
+        top: 30%;
+        transform: rotate(10deg); 
+    }
+    50% {
+        left: 50%;
+        top: 10%;
+        transform: rotate(5deg); 
+    }
+    75% {
+        left: 80%;
+        top: 5%;
+        transform: rotate(0deg);
+    }
+    100% {
+        left: 110%; 
+        top: 10%;
+        transform: rotate(-15deg); 
+    }
+}
+
+.characters {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 40px 0;
+}
+
+.character {
+    height: 200px; 
+    width: auto; 
+    animation: bounce 2s infinite;
+}
+
+.character.rick {
+    animation-delay: 0.3s;
+}
+
+.character.morty {
+    animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer-bottom span {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .footer-links p {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .footer-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .footer-link i {
+    font-size: 1.5rem;
+  }
+  
+  .footer-link:hover {
+    color: #ffcc00;
+    transform: scale(1.1);
+  }
