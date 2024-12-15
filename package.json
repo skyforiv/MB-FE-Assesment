@@ -1,5 +1,6 @@
 {
   "name": "mb-rick-and-morty",
+  "homepage": "https://skyforiv.github.io/MB-FE-Assesment",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
