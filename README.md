@@ -1,3 +1,5 @@
+**Canlı Demo:** [Rick and Morty Uygulaması](https://mb-fe-assesment.vercel.app)
+
 # Proje Raporu
 
 ## Genel Bakış
