@@ -49,7 +49,12 @@
     transition: color 0.3s ease, transform 0.3s ease;
   }
   
-  .nav-link:hover {
+  .nav-link:hover, .nav-link:active {
+    color: #ffcc00;
+    transform: scale(1.1);
+  }
+  
+  .nav-link.active {
     color: #ffcc00;
     transform: scale(1.1);
   }
@@ -70,6 +75,10 @@
     transform: scaleX(1);
   }
   
+  .nav-link.active:before {
+    transform: scaleX(1);
+  }
+
   .menu-icon {
     display: none;
     flex-direction: column;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
@@ -22,15 +22,24 @@ const Header = () => {
       </div>
 
       <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
-        <Link to="/" className="nav-link">
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+        >
           Characters
-        </Link>
-        <Link to="/favoriteCharacters" className="nav-link">
+        </NavLink>
+        <NavLink
+          to="/favoriteCharacters"
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+        >
           Favorite Characters
-        </Link>
-        <Link to="/about" className="nav-link">
+        </NavLink>
+        <NavLink
+          to="/about"
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+        >
           About Project
-        </Link>
+        </NavLink>
       </nav>
 
       <div className="menu-icon" onClick={toggleMenu}>

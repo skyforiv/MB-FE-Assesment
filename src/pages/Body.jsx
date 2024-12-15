@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import CharacterList from "./character-list/CharacterList";
 import { getCharacters } from "../services/RickandMortyService";
+import About from "./about/About";
 
 const Body = () => {
   // Karakterlerin durumunu tutan state: yükleme, hata ve sonuçlar için
@@ -49,6 +50,10 @@ const Body = () => {
         <Route
           path="/"
           element={<CharacterList key={1} characterState={characterState} />}
+        />
+        <Route
+          path="/about"
+          element={<About />}
         />
         <Route
           path="/favoriteCharacters"
